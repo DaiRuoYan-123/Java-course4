@@ -76,6 +76,9 @@
 
 9.用于try-catch语句判断语句是否异常，发在输入属性那段语句中，运用printStackTrace()在命令行打印异常信息在程序中出错的位置及原因。
 
+10.创建countKey(String str, String key)的方法，进行对字的搜索
+
+
 ## 核心代码
 
 1.创建文本文件，添加路径，判断文件是否存在，不存在则创建文件
@@ -133,9 +136,33 @@ FileWriter fileWriter2 =new FileWriter(file2);
 	            e.printStackTrace();
 	        } 
  ```
+ 7.创建countKey(String str, String key)的方法，对关键字的进行搜索
+ ```
+  public static int countKey(String str, String key) {
+
+		  int index = 0;
+		  int count = 0;
+		  while ((index = str.indexOf(key, index)) != -1) {
+		   index += key.length();
+		   // 或//str=str.subString(index+key.length());//从指定位置向后截取字符串
+		   count++;
+		  }
+		  return count;
+		 }
+```
+```
+ int totalCount = 0;
+	        String key = "王";
+	        
+	         totalCount += countKey(str, key);
+	        
+	        System.out.println("文章中一共出现了：" + key + ":" + totalCount + "次");
+```
+	       
+ 
  ## 运行结果
  
- ![a](https://github.com/DaiRuoYan-123/Java-course4/blob/main/java1.png)
+ ![a](https://github.com/DaiRuoYan-123/Java-course4/blob/main/java12.png)
  
  ![b](https://github.com/DaiRuoYan-123/Java-course4/blob/main/java2.png)
  
