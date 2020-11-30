@@ -38,6 +38,14 @@ public class WriteTxt {
 	        BufferedReader br = new BufferedReader(f);
 	        String str = br.readLine();
 	        StringBuffer s=new StringBuffer(str);
+	        String st;
+	        int totalCount = 0;
+	        String key = "王";
+	        
+	         totalCount += countKey(str, key);
+	        
+	        System.out.println("文章中一共出现了：" + key + ":" + totalCount + "次");
+	       
 	        
 	         
 	        	for (int j = 7;j<s.length();j+=15) {
@@ -49,8 +57,8 @@ public class WriteTxt {
 	             for (int c = 16;c<s.length();c+=17) {
 	                s.insert(c, "\n");
 	                }
-	            
-	 
+	             
+	      
 	        String path2 = "E:\\javashiyan\\A.txt";
 	        File file2 = new File(path2);
 	       
@@ -66,7 +74,7 @@ public class WriteTxt {
             
 	        FileWriter a = new FileWriter(file2, true);
 	        BufferedWriter a1 = new BufferedWriter(a);
-	        a1.write("");//清空原文件内容 
+	        
 	        Scanner console=new Scanner(System.in); //从标准输入设备（一般是键盘）中读取数
 			 System.out.println("请输入你的姓名:");
 		     String na = console.nextLine();//字符类型的输入方式
@@ -90,7 +98,20 @@ public class WriteTxt {
 	            e.printStackTrace();
 	        } 
 
-	        
 	       
 	 }
+	 public static int countKey(String str, String key) {
+
+		  int index = 0;
+		  int count = 0;
+		  while ((index = str.indexOf(key, index)) != -1) {
+		   index += key.length();
+		   // 或//str=str.subString(index+key.length());//从指定位置向后截取字符串
+		   count++;
+		  }
+		  return count;
+		 }
+	
+
+		
 }
